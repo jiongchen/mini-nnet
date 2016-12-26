@@ -66,7 +66,7 @@ public:
   virtual ~neural_network() {}
   virtual size_t configure_net() {
     // design your own network structure here
-    layers_.resize(4);
+    layers_.resize(5);
     size_t curr_layer;
     
     // input layer
@@ -78,20 +78,27 @@ public:
 
     // hidden layer 1
     curr_layer = 1;
-    layers_[curr_layer] = std::make_shared<nnet_layer>(9+1);
+    layers_[curr_layer] = std::make_shared<nnet_layer>(10+1);
     for (size_t i = 0; i < layers_[curr_layer]->dim_-1; ++i)
       layers_[curr_layer]->activate_[i] = &NNET_SIGMOID;
     layers_[curr_layer]->activate_.back() = &NNET_CONSTANT;
 
     // hidden layer 2
     curr_layer = 2;
-    layers_[curr_layer] = std::make_shared<nnet_layer>(9+1);
+    layers_[curr_layer] = std::make_shared<nnet_layer>(20+1);
+    for (size_t i = 0; i < layers_[curr_layer]->dim_-1; ++i)
+      layers_[curr_layer]->activate_[i] = &NNET_SIGMOID;
+    layers_[curr_layer]->activate_.back() = &NNET_CONSTANT;
+
+    // hidden layer 3
+    curr_layer = 3;
+    layers_[curr_layer] = std::make_shared<nnet_layer>(10+1);
     for (size_t i = 0; i < layers_[curr_layer]->dim_-1; ++i)
       layers_[curr_layer]->activate_[i] = &NNET_SIGMOID;
     layers_[curr_layer]->activate_.back() = &NNET_CONSTANT;
     
     // output layer
-    curr_layer = 3;
+    curr_layer = 4;
     layers_[curr_layer] = std::make_shared<nnet_layer>(3);
     for (size_t i = 0; i < layers_[curr_layer]->dim_; ++i)
       layers_[curr_layer]->activate_[i] = &NNET_IDENTITY;
