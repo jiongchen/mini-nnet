@@ -2,15 +2,15 @@
 #include <nnet/nnet.h>
 
 using namespace std;
-using namespace Eigen;
 
 int main(int argc, char *argv[])
 {
   srand(time(NULL));
-  const size_t sample_num = 200;
+  const size_t sample_num = 500;
 
-  MatrixXd in =  MatrixXd::Random(3, sample_num);
-  MatrixXd out = MatrixXd::Zero(3, sample_num);
+  // construct training data set
+  nnet::Mat in =  nnet::Mat::Random(3, sample_num);
+  nnet::Mat out = nnet::Mat::Zero(3, sample_num);
   for (size_t i = 0; i < in.cols(); ++i) {
     out(0, i) = sin(in(0, i));
     out(1, i) = cos(in(1, i));
@@ -20,15 +20,22 @@ int main(int argc, char *argv[])
   shared_ptr<nnet::neural_network> net = make_shared<nnet::neural_network>();
   net->configure_net();
 
-  // initialize weights for nnet, close to zero
-  VectorXd w = VectorXd::Random(net->get_weight_num());
+  // initialize weights for nnet,
+  // choose random number close to zero
+  nnet::Vec w = nnet::Vec::Random(net->get_weight_num());
 
+  // train
   nnet::nnet_train(net, in, out, w);
 
-  VectorXd test_x(3);
-  test_x << M_PI/2, 0, 1;
-  VectorXd test_y;
+  // test
+  nnet::Vec test_x = nnet::Vec::Random(3);
+  nnet::Vec true_y(3);
+  true_y << sin(test_x(0)), cos(test_x(1)), exp(test_x(2));
+  
+  nnet::Vec test_y;
   nnet::nnet_predict(net, test_x, test_y);
+
+  cout << "# expect : " << true_y.transpose() << endl;
   cout << "# predict: " << test_y.transpose() << endl;
 
   cout << "[INFO] done" << endl;

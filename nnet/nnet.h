@@ -1,5 +1,5 @@
-#ifndef SIMPLE_NNET_H
-#define SIMPLE_NNET_H
+#ifndef MINI_NNET_H
+#define MINI_NNET_H
 
 #include <Eigen/Dense>
 
@@ -78,7 +78,7 @@ public:
 
     // hidden layer 1
     curr_layer = 1;
-    layers_[curr_layer] = std::make_shared<nnet_layer>(4+1);
+    layers_[curr_layer] = std::make_shared<nnet_layer>(9+1);
     for (size_t i = 0; i < layers_[curr_layer]->dim_-1; ++i)
       layers_[curr_layer]->activate_[i] = &NNET_SIGMOID;
     layers_[curr_layer]->activate_.back() = &NNET_CONSTANT;
