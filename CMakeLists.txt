@@ -1,4 +1,4 @@
-project(least-nnet)
+project(mini-nnet)
 cmake_minimum_required(VERSION 2.8)
 
 list(APPEND CMAKE_CXX_FLAGS "-fopenmp -std=c++11 -fpermissive")
@@ -25,5 +25,5 @@ add_subdirectory(nnet)
 
 add_executable(main main.cc)
 target_link_libraries(main
-  least-nnet
+  mini-nnet
 )
