@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
   true_y << cos(sin(test_x(0))), exp(cos(test_x(1))), pow(exp(test_x(2)), 2);
   
   nnet::Vec test_y;
-  nnet::nnet_predict(net, test_x, test_y);
+  nnet::nnet_predict(net, w, test_x, test_y);
 
   cout << "# expect : " << true_y.transpose() << endl;
   cout << "# predict: " << test_y.transpose() << endl;

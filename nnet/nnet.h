@@ -243,7 +243,9 @@ int nnet_train(const std::shared_ptr<neural_network> &net, const Mat &in, const 
   return 0;
 }
 
-int nnet_predict(const std::shared_ptr<neural_network> &net, const Vec &in, Vec &out) {
+int nnet_predict(const std::shared_ptr<neural_network> &net, const Vec &w, const Vec &in, Vec &out) {
+  CHECK(w.size() == net->get_weight_num());
+  net->set_weights(w.data(), w.size());
   return net->predict(in, out);
 }
 
