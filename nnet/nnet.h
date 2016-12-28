@@ -64,14 +64,14 @@ class neural_network
 public:
   neural_network() : dimW_(0) {}
   virtual ~neural_network() {}
-  virtual size_t configure_net() {
+  virtual size_t configure_net(const size_t dimI, const size_t dimO) {
     // design your own network structure here
     layers_.resize(5);
     size_t curr_layer;
     
     // input layer
     curr_layer = 0;
-    layers_[curr_layer] = std::make_shared<nnet_layer>(3+1);
+    layers_[curr_layer] = std::make_shared<nnet_layer>(dimI+1);
     for (size_t i = 0; i < layers_[curr_layer]->dim_-1; ++i)
       layers_[curr_layer]->activate_[i] = &NNET_IDENTITY;
     layers_[curr_layer]->activate_.back() = &NNET_CONSTANT;
@@ -99,7 +99,7 @@ public:
     
     // output layer
     curr_layer = 4;
-    layers_[curr_layer] = std::make_shared<nnet_layer>(3);
+    layers_[curr_layer] = std::make_shared<nnet_layer>(dimO);
     for (size_t i = 0; i < layers_[curr_layer]->dim_; ++i)
       layers_[curr_layer]->activate_[i] = &NNET_IDENTITY;
 

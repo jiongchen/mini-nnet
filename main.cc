@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
   }
 
   shared_ptr<nnet::neural_network> net = make_shared<nnet::neural_network>();
-  net->configure_net();
+  net->configure_net(in.rows(), out.rows());
 
   // initialize weights for nnet,
   // choose random number close to zero
