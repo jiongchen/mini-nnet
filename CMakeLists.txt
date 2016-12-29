@@ -23,7 +23,14 @@ endif(LBFGS_FOUND)
 
 add_subdirectory(nnet)
 
-add_executable(main main.cc)
-target_link_libraries(main
+add_executable(regress main_regress.cc)
+target_link_libraries(regress
   mini-nnet
+  minpack
+)
+
+add_executable(classify main_classify.cc)
+target_link_libraries(classify
+  mini-nnet
+  minpack
 )
