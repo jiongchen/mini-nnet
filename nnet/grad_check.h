@@ -1,5 +1,5 @@
-#ifndef GRAD_CHECK_H
-#define GRAD_CHECK_H
+#ifndef MININET_GRAD_CHECK_H
+#define MININET_GRAD_CHECK_H
 
 // interface for user's customization
 typedef void (*val_gra_func_t)(const int m, const int n, const double *x,

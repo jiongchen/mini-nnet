@@ -1,5 +1,5 @@
-#ifndef OPTIMIZER_H
-#define OPTIMIZER_H
+#ifndef MININET_OPTIMIZER_H
+#define MININET_OPTIMIZER_H
 
 #include <memory>
 

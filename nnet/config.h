@@ -1,5 +1,5 @@
-#ifndef CONFIG_H
-#define CONFIG_H
+#ifndef MININET_CONFIG_H
+#define MININET_CONFIG_H
 
 #define CHECK(x) \
     do { \

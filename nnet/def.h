@@ -1,5 +1,5 @@
-#ifndef NUMERIC_DEF_H
-#define NUMERIC_DEF_H
+#ifndef MININET_NUMERIC_DEF_H
+#define MININET_NUMERIC_DEF_H
 
 #include <Eigen/Sparse>
 
