@@ -152,7 +152,7 @@ public:
     loss_ = NNET_LOSS_MSE;
 
     // set layers of the nnet
-    layers_.resize(2);
+    layers_.resize(3);
     size_t curr_layer;
     
     // input layer
